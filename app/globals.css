@@ -31,3 +31,11 @@ body {
     text-wrap: balance;
   }
 }
+
+#memoryCard{
+  background-color: red;
+}
+
+.container {
+  height: 100vh;
+}
