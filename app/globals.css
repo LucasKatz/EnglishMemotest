@@ -72,6 +72,12 @@ body {
   pointer-events: auto;  /* Añade esta línea para permitir eventos del mouse */
 }
 
+.card-wrapper.matched {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+
 #cardContent {
   background-color: red;
   width: 6rem;
