@@ -33,13 +33,13 @@ function Animals() {
   };
 
   const checkMatch = () => {
-    const [card1, card2] = revealedCards;
-    if (card1.animalEmojis === card2.animalEmojis) {
-      // Los valores coinciden, puedes implementar la lógica para hacer desaparecer las cartas.
-      console.log("Coinciden");
-    } else {
-      // Los valores no coinciden, debes volver a su estado "cubierto".
-      console.log("No coinciden");
+    if (revealedCards.length === 2) {
+      const [card1, card2] = revealedCards;
+      if (card1.animalEmojis === card2.animalEmojis) {
+        console.log("Coinciden");
+      } else {
+        console.log("No coinciden");
+      }
     }
   };
 
@@ -60,3 +60,4 @@ function Animals() {
 }
 
 export default Animals;
+
