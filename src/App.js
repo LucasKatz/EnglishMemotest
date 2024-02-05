@@ -1,9 +1,9 @@
 import Navbar from "./components/navbar";
 import Footer from './components/footer';
 import Animals from "./animals/animalCards";
-import "./App.css"
-
-
+import Home from "./home/home";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import "./App.css";
 
 export const metadata = {
   title: 'Memory Game Online',
@@ -12,16 +12,19 @@ export const metadata = {
   keywords: "games - school - English - vocabulary"
 }
 
-export default function App({ children}) {
+export default function App() {
   return (
-    <html lang="en">
-      <body>
-
-        <Navbar/>
-        <Animals/>
-        {children}
-        <Footer/>  
-      </body>
-    </html>
-  )
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/animals' element={<Animals />} />
+        <Route path='/Irregular' element="" />
+        <Route path='/cart' element="" />
+        <Route path='/checkout' element="" />
+        <Route path='*' element={<h1>404 NOT FOUND</h1>} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
