@@ -1,11 +1,12 @@
+// Animals.js
+import React, { useState, useEffect } from "react";
 import MemoryCard from "../components/memoryCard";
-import { useState, useEffect } from "react";
 import "../App.css";
 
 const animalEmojis = ["🐶", "🐱"];
 
-function shuffleArray(array) {
-  const shuffledArray = [...array];
+function shuffleArray(animalEmojis) {
+  const shuffledArray = [...animalEmojis];
   for (let i = shuffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
@@ -16,7 +17,8 @@ function shuffleArray(array) {
 function Animals() {
   const [shuffledAnimals, setShuffledAnimals] = useState(shuffleArray(animalEmojis.concat(animalEmojis)));
   const [revealedCards, setRevealedCards] = useState([]);
-  
+  const [isRevealed, setIsRevealed] = useState(false);
+
   useEffect(() => {
     if (revealedCards.length === 2) {
       setTimeout(() => {
@@ -26,10 +28,10 @@ function Animals() {
     }
   }, [revealedCards]);
 
-  const onCardClick = (clickedCard) => {
-    if (revealedCards.length < 2 && !revealedCards.includes(clickedCard)) {
-      setRevealedCards((prevCards) => [...prevCards, clickedCard]);
-    }
+  const onCardClick = (clickedCard, isCurrentlyRevealed) => {
+    // Manejar directamente el estado isRevealed de la tarjeta clicada
+    setRevealedCards((prevCards) => [...prevCards, clickedCard]);
+    setIsRevealed(!isCurrentlyRevealed);
   };
 
   const checkMatch = () => {
@@ -54,19 +56,19 @@ function Animals() {
   return (
     <main>
       <section className="container m-auto flex justify-center items-center gap-12 flex-wrap">
-        {filterUnrevealedAndUnmatchedCards().map((item, index) => (
-          <MemoryCard
-            key={index}
-            item={{ animalEmojis: item }}
-            onCardClick={onCardClick}
-            isRevealed={revealedCards.some((card) => card === item)}
-          />
-        ))}
+      {shuffledAnimals.map((item) => (
+  <MemoryCard
+    key={item.id} // Utiliza un identificador único como clave
+    item={{ animalEmojis: item }}
+    onCardClick={onCardClick}
+    isRevealed={revealedCards.some((card) => card === item)}
+  />
+))}
+
       </section>
     </main>
   );
 }
 
 export default Animals;
-
 

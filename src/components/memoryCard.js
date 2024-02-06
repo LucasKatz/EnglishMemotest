@@ -1,41 +1,33 @@
 import React, { useState } from "react";
 
-const MemoryCard = ({ item, onCardClick, isRevealed }) => {
+const MemoryCard = ({ item, onCardClick }) => {
   const { animalEmojis } = item;
 
   // Estado local para manejar si la tarjeta está revelada o no
-  const [isClicked, setIsClicked] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
 
   const handleClick = () => {
-    // Cambiar el estado de isClicked al contrario de su valor actual
-    setIsClicked(!isClicked);
+    // Cambiar el estado de isRevealed al contrario de su valor actual
+    setIsRevealed(!isRevealed);
+    // Llamar a la función onCardClick pasando la tarjeta y su estado de revelación actual
     onCardClick(item);
-  };
 
-  // Establecer los estilos en línea dependiendo del estado de la tarjeta
-  const cardStyles = {
-    backgroundColor: isClicked ? "blue" : "red",
-    transform: isClicked ? "rotateY(180deg)" : "rotateY(0)",
-    transformStyle: "preserve-3d",
-    transition: "transform 0.5s ease"
   };
 
   return (
-    <div
-      id="memoryCard"
-      className="card-wrapper"
-      style={cardStyles} // Aplicar los estilos en línea
-      onClick={handleClick}
-    >
-      <div id="cardContent">
-        {animalEmojis}
+    <div className={`card-wrapper ${isRevealed ? 'revealed' : ''}`}>
+      <div
+        id="memoryCard"
+        className="card"
+        onClick={handleClick}
+      >
+        <div id="cardContent">
+          {animalEmojis}
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default MemoryCard;
-
-
-
 
