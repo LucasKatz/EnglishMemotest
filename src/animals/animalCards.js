@@ -37,16 +37,24 @@ function Animals() {
       const [card1, card2] = revealedCards;
       if (card1.animalEmojis === card2.animalEmojis) {
         console.log("Coinciden");
+        // Eliminar las tarjetas coincidentes del array de tarjetas
+        const updatedAnimals = shuffledAnimals.filter(item => item !== card1.animalEmojis && item !== card2.animalEmojis);
+        setShuffledAnimals(updatedAnimals);
       } else {
         console.log("No coinciden");
       }
     }
   };
 
+  // Función para filtrar y devolver los productos no revelados ni coincidentes
+  const filterUnrevealedAndUnmatchedCards = () => {
+    return shuffledAnimals.filter(item => !revealedCards.some(card => card.item === item));
+  };
+
   return (
     <main>
       <section className="container m-auto flex justify-center items-center gap-12 flex-wrap">
-        {shuffledAnimals.map((item, index) => (
+        {filterUnrevealedAndUnmatchedCards().map((item, index) => (
           <MemoryCard
             key={index}
             item={{ animalEmojis: item }}
@@ -60,4 +68,5 @@ function Animals() {
 }
 
 export default Animals;
+
 
