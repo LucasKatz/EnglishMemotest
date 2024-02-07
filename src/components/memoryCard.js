@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+// En MemoryCard.js
+import React, { useState, useEffect } from "react";
 
 const MemoryCard = ({ item, onCardClick }) => {
   const { animalEmojis } = item;
 
-  // Estado local para manejar si la tarjeta está revelada o no
   const [isRevealed, setIsRevealed] = useState(false);
 
   const handleClick = () => {
-    // Cambiar el estado de isRevealed al contrario de su valor actual
     setIsRevealed(!isRevealed);
-    // Llamar a la función onCardClick pasando la tarjeta y su estado de revelación actual
-    onCardClick(item);
-
+    onCardClick(item, isRevealed); // Pasa el estado de revelación actual
   };
 
+  useEffect(() => {
+    // Restablecer el estado de revelación después de un tiempo si no hay coincidencia
+    if (!isRevealed) {
+      const timeoutId = setTimeout(() => {
+        setIsRevealed(false);
+      }, 1000); // Ajusta el tiempo según tus necesidades
+
+      return () => clearTimeout(timeoutId); // Limpia el temporizador al desmontar el componente
+    } else {
+      // Restablecer el estado flipped si ambas cartas tienen isRevealed igual a true
+      const timeoutId = setTimeout(() => {
+        setIsRevealed(false);
+      }, 1500); // Ajusta el tiempo según tus necesidades
+    }
+  }, [isRevealed]);
+
   return (
-    <div className={`card-wrapper ${isRevealed ? 'revealed' : ''}`}>
+    <div className={`card-wrapper ${isRevealed ? 'flipped' : ''}`}>
       <div
         id="memoryCard"
         className="card"
@@ -30,4 +43,7 @@ const MemoryCard = ({ item, onCardClick }) => {
 }
 
 export default MemoryCard;
+
+
+
 

@@ -48,17 +48,13 @@ function Animals() {
     }
   };
 
-  // Función para filtrar y devolver los productos no revelados ni coincidentes
-  const filterUnrevealedAndUnmatchedCards = () => {
-    return shuffledAnimals.filter(item => !revealedCards.some(card => card.item === item));
-  };
 
   return (
     <main>
       <section className="container m-auto flex justify-center items-center gap-12 flex-wrap">
       {shuffledAnimals.map((item, index) => (
   <MemoryCard
-    key={`${item}_${index}`} // Utiliza un identificador único como clave
+    key={`${item}_${index}`} 
     item={{ animalEmojis: item }}
     onCardClick={onCardClick}
   />
