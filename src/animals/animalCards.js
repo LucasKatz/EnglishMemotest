@@ -1,4 +1,3 @@
-// Animals.js
 import React, { useState, useEffect } from "react";
 import MemoryCard from "../components/memoryCard";
 import "../App.css";
@@ -15,9 +14,10 @@ function shuffleArray(animalEmojis) {
 }
 
 function Animals() {
-  const [shuffledAnimals, setShuffledAnimals] = useState(shuffleArray(animalEmojis.concat(animalEmojis)));
+  const [shuffledAnimals, setShuffledAnimals] = useState(
+    shuffleArray(animalEmojis.concat(animalEmojis)).map(item => ({ animalEmojis: item, isMatched: false }))
+  );
   const [revealedCards, setRevealedCards] = useState([]);
-  const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
     if (revealedCards.length === 2) {
@@ -28,10 +28,8 @@ function Animals() {
     }
   }, [revealedCards]);
 
-  const onCardClick = (clickedCard, isCurrentlyRevealed) => {
-    // Manejar directamente el estado isRevealed de la tarjeta clicada
+  const onCardClick = (clickedCard) => {
     setRevealedCards((prevCards) => [...prevCards, clickedCard]);
-    setIsRevealed(!isCurrentlyRevealed);
   };
 
   const checkMatch = () => {
@@ -39,30 +37,29 @@ function Animals() {
       const [card1, card2] = revealedCards;
       if (card1.animalEmojis === card2.animalEmojis) {
         console.log("Coinciden");
-        // Eliminar las tarjetas coincidentes del array de tarjetas
-        const updatedAnimals = shuffledAnimals.filter(item => item !== card1.animalEmojis && item !== card2.animalEmojis);
-        setShuffledAnimals(updatedAnimals);
+        // Establecer isMatched en true para las tarjetas coincidentes
+        card1.isMatched = true;
+        card2.isMatched = true;       
       } else {
         console.log("No coinciden");
       }
     }
   };
 
-
   return (
     <main>
       <section className="container m-auto flex justify-center items-center gap-12 flex-wrap">
-      {shuffledAnimals.map((item, index) => (
-  <MemoryCard
-    key={`${item}_${index}`} 
-    item={{ animalEmojis: item }}
-    onCardClick={onCardClick}
-  />
-))}
-
+        {shuffledAnimals.map((item, index) => (
+          <MemoryCard
+            key={`${item.animalEmojis}_${index}`} 
+            item={item}
+            onCardClick={onCardClick}
+          />
+        ))}
       </section>
     </main>
   );
 }
 
 export default Animals;
+

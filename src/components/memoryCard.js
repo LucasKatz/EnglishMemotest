@@ -1,37 +1,36 @@
-// En MemoryCard.js
 import React, { useState, useEffect } from "react";
 
 const MemoryCard = ({ item, onCardClick }) => {
-  const { animalEmojis } = item;
+  const { animalEmojis, isMatched } = item;
 
   const [isRevealed, setIsRevealed] = useState(false);
 
   const handleClick = () => {
-    setIsRevealed(!isRevealed);
-    onCardClick(item, isRevealed); // Pasa el estado de revelación actual
+    if (!isMatched) {
+      // Solo procesar el clic si la tarjeta no está emparejada
+      setIsRevealed(true);
+      onCardClick(item, isRevealed);
+    }
   };
 
   useEffect(() => {
     // Restablecer el estado de revelación después de un tiempo si no hay coincidencia
-    if (!isRevealed) {
+    if (isRevealed && !isMatched) {
+      console.log("isRevealed",isRevealed)
+      console.log("isMatched", isMatched)
       const timeoutId = setTimeout(() => {
         setIsRevealed(false);
       }, 1000); // Ajusta el tiempo según tus necesidades
 
       return () => clearTimeout(timeoutId); // Limpia el temporizador al desmontar el componente
-    } else {
-      // Restablecer el estado flipped si ambas cartas tienen isRevealed igual a true
-      const timeoutId = setTimeout(() => {
-        setIsRevealed(false);
-      }, 1500); // Ajusta el tiempo según tus necesidades
     }
-  }, [isRevealed]);
+  }, [isRevealed, isMatched]);
 
   return (
     <div className={`card-wrapper ${isRevealed ? 'flipped' : ''}`}>
       <div
         id="memoryCard"
-        className="card"
+        className={`card ${isMatched ? 'matched' : ''}`}
         onClick={handleClick}
       >
         <div id="cardContent">
@@ -43,6 +42,7 @@ const MemoryCard = ({ item, onCardClick }) => {
 }
 
 export default MemoryCard;
+
 
 
 
