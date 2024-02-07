@@ -56,12 +56,11 @@ function Animals() {
   return (
     <main>
       <section className="container m-auto flex justify-center items-center gap-12 flex-wrap">
-      {shuffledAnimals.map((item) => (
+      {shuffledAnimals.map((item, index) => (
   <MemoryCard
-    key={item.id} // Utiliza un identificador único como clave
+    key={`${item}_${index}`} // Utiliza un identificador único como clave
     item={{ animalEmojis: item }}
     onCardClick={onCardClick}
-    isRevealed={revealedCards.some((card) => card === item)}
   />
 ))}
 
@@ -71,4 +70,3 @@ function Animals() {
 }
 
 export default Animals;
-
