@@ -84,7 +84,7 @@ function Animals() {
           );
           setMatchedCards((prevMatchedCards) => [...prevMatchedCards, card1, card2]);
           setIsMatched(true);
-        }, 1000); // Ajusta el tiempo según tus necesidades
+        }, 5000); // ESTE ES EL SETTIMEOUT QUE FUNCIONA A LA INVERSA
       } else {
         console.log("No coinciden");
   
@@ -98,7 +98,7 @@ function Animals() {
             )
           );
           setIsRevealed(false);
-        }, 3000); // Ajusta el tiempo según tus necesidades
+        }, 1000); // Ajusta el tiempo según tus necesidades
       }
     }
   };
