@@ -13,17 +13,18 @@ const MemoryCard = ({ item, onCardClick }) => {
     }
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     // Restablecer el estado de revelación después de un tiempo si no hay coincidencia
-    if (isRevealed && !isMatched) {
+    if (animalEmojis.value === animalEmojis.value) {
       console.log("isMatched", isMatched)
+      console.log("values", animalEmojis)
       const timeoutId = setTimeout(() => {
         setIsRevealed(false);
-      }, 1000); // Ajusta el tiempo según tus necesidades
+      }, 3000); // Ajusta el tiempo según tus necesidades
 
       return () => clearTimeout(timeoutId); // Limpia el temporizador al desmontar el componente
     }
-  }, [isRevealed, isMatched]);
+  }, [isRevealed, isMatched]);*/
 
   return (
     <div className={`card-wrapper ${isRevealed ? 'flipped' : ''}`}>

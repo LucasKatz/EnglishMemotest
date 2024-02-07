@@ -15,9 +15,9 @@ function shuffleArray(animalEmojis) {
 
 function Animals() {
   const [shuffledAnimals, setShuffledAnimals] = useState(
-    shuffleArray(animalEmojis.concat(animalEmojis)).map((item) => ({
+    shuffleArray(animalEmojis.concat(animalEmojis)).map((item, index) => ({
+      id: index,
       animalEmojis: item,
-      isMatched: false, //este es el valor isMatched que tengo qeu pasar como condicional
     }))
   );
   const [revealedCards, setRevealedCards] = useState([]);
@@ -25,6 +25,7 @@ function Animals() {
   const [matchedCardsChanged, setMatchedCardsChanged] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
   const [isMatched, setIsMatched] = useState(false);
+
 
   useEffect(() => {
     if (revealedCards.length === 2) {
@@ -36,28 +37,34 @@ function Animals() {
   }, [revealedCards]);
 
   useEffect(() => {
-    // Lógica que se ejecuta cuando matchedCards cambia
     console.log("matchedCards changed:", matchedCards);
     setMatchedCardsChanged(true);
   }, [matchedCards]);
 
   useEffect(() => {
-    // Restablecer el estado de revelación después de un tiempo si no hay coincidencia
-    if (isRevealed && !isMatched && !matchedCardsChanged) {
-      console.log("isMatched", isMatched);
+    if (isRevealed && !matchedCardsChanged) {
       const timeoutId = setTimeout(() => {
         setIsRevealed(false);
-      }, 1000); // Ajusta el tiempo según tus necesidades
+      }, 1000);
 
-      return () => clearTimeout(timeoutId); // Limpia el temporizador al desmontar el componente
+      return () => clearTimeout(timeoutId);
     }
 
-    // Reiniciar la variable de estado que indica cambios en matchedCards
     setMatchedCardsChanged(false);
-  }, [isRevealed, isMatched, matchedCardsChanged]);
+  }, [isRevealed, matchedCardsChanged]);
 
-  const onCardClick = (clickedCard) => {
-    setRevealedCards((prevCards) => [...prevCards, clickedCard]);
+  const handleMatch = (id) => {
+    setShuffledAnimals((prevAnimals) =>
+      prevAnimals.map((item) =>
+        item.id === id ? { ...item, isMatched: true } : item
+      )
+    );
+  };
+
+  const onCardClick = (clickedCard, isRevealed) => {
+    if (!isRevealed) {
+      setRevealedCards((prevCards) => [...prevCards, clickedCard]);
+    }
   };
 
   const checkMatch = () => {
@@ -65,22 +72,41 @@ function Animals() {
       const [card1, card2] = revealedCards;
       if (card1.animalEmojis === card2.animalEmojis) {
         console.log("Coinciden");
-        card1.isMatched = true;
-        card2.isMatched = true;
-        setShuffledAnimals((prevAnimals) =>
-          prevAnimals.map((item) =>
-            item.animalEmojis === card1.animalEmojis || item.animalEmojis === card2.animalEmojis
-              ? { ...item, isMatched: true }
-              : item
-          )
-        );
-        setMatchedCards((prevMatchedCards) => [...prevMatchedCards, card1, card2]);
+  
+        // Después de un tiempo, establece isMatched en true
+        setTimeout(() => {
+          setShuffledAnimals((prevAnimals) =>
+            prevAnimals.map((item) =>
+              item.id === card1.id || item.id === card2.id
+                ? { ...item, isMatched: true }
+                : item
+            )
+          );
+          setMatchedCards((prevMatchedCards) => [...prevMatchedCards, card1, card2]);
+          setIsMatched(true);
+        }, 1000); // Ajusta el tiempo según tus necesidades
       } else {
         console.log("No coinciden");
+  
+        // Después de un tiempo, oculta las cartas reveladas
+        setTimeout(() => {
+          setShuffledAnimals((prevAnimals) =>
+            prevAnimals.map((item) =>
+              item.id === card1.id || item.id === card2.id
+                ? { ...item, isMatched: false }
+                : item
+            )
+          );
+          setIsRevealed(false);
+        }, 3000); // Ajusta el tiempo según tus necesidades
       }
     }
   };
-
+  
+  
+  
+  
+  
   return (
     <main>
       <section className="container m-auto flex justify-center items-center gap-12 flex-wrap">
