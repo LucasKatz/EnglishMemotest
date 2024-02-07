@@ -16,7 +16,6 @@ const MemoryCard = ({ item, onCardClick }) => {
   useEffect(() => {
     // Restablecer el estado de revelación después de un tiempo si no hay coincidencia
     if (isRevealed && !isMatched) {
-      console.log("isRevealed",isRevealed)
       console.log("isMatched", isMatched)
       const timeoutId = setTimeout(() => {
         setIsRevealed(false);
@@ -42,8 +41,6 @@ const MemoryCard = ({ item, onCardClick }) => {
 }
 
 export default MemoryCard;
-
-
 
 
 
