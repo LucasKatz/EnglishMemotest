@@ -1,9 +1,4 @@
-import Navbar from "./components/navbar";
-import Footer from './components/footer';
-import Animals from "./animals/animalCards";
-import Home from "./home/home";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import "./App.css";
+const animalEmojis = [..."🐶 🐱"];
 
 export const metadata = {
   title: 'Memory Game Online',
@@ -12,19 +7,17 @@ export const metadata = {
   keywords: "games - school - English - vocabulary"
 }
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/animals' element={<Animals />} />
-        <Route path='/Irregular' element="" />
-        <Route path='/cart' element="" />
-        <Route path='/checkout' element="" />
-        <Route path='*' element={<h1>404 NOT FOUND</h1>} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
-  );
+const App = () => {
+  const [shuffledAnimals, setShuffledAnimals] = useState([])
+
+    const shuffledArray = [...animalEmojis];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  
+
 }
+
+export default App

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import MemoryCard from "../components/memoryCard";
-import "../App.css";
+import { useState, useEffect } from "react";
+import Board from "./animals/animalsBoard";
 
 const animalEmojis = ["🐶", "🐱"];
 
@@ -102,20 +101,9 @@ function Animals() {
       }
     }
   };
-  
-  
-  
-  
-  
   return (
-    <main>
-      <section className="container m-auto flex justify-center items-center gap-12 flex-wrap">
-        {shuffledAnimals.map((item, index) => (
-          <MemoryCard key={`${item.animalEmojis}_${index}`} item={item} onCardClick={onCardClick} />
-        ))}
-      </section>
-    </main>
-  );
+      <Board memoBlocks={shuffledAnimals} />
+    );
 }
 
-export default Animals;
+export default Animals
