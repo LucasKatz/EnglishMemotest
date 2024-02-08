@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Board from "./Board/Board";
+import handleMemoClick from "./components/memoClick";
 
-const animalEmojis = [..."🐶 🐱 🐭 🐰 🦊 🦁 🐯 🐻 🐨 🐼 🦓 🐴 🦄 🐮 🐷 🐸 🐔 🐦 🐧 🐢"];
+const animalEmojis = [..."🐶🐱🐭🐰🦊🦁🐯🐻🐨🐼🦓🐴🦄🐮🐷🐸🐔🐦🐧🐢"];
 
 export const metadata = {
   title: 'Memory Game Online',
@@ -12,6 +13,8 @@ export const metadata = {
 
 const App = () => {
   const [shuffledAnimals, setShuffledAnimals] = useState([]);
+  const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     const shuffledArray = [...animalEmojis, ...animalEmojis];
@@ -23,8 +26,19 @@ const App = () => {
     setShuffledAnimals(formattedArray);
   }, []);
 
+  const handleClick = (memoBlock) => {
+    handleMemoClick(
+      memoBlock,
+      shuffledAnimals,
+      setShuffledAnimals,
+      selectedMemoBlock,
+      setselectedMemoBlock,
+      setAnimating
+    );
+  };
+
   return (
-    <Board memoryCard={shuffledAnimals} />
+    <Board memoryCard={shuffledAnimals} handleClick={handleClick} />
   );
 }
 
