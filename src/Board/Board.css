@@ -1,0 +1,15 @@
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px; /* Ajusta el espacio entre las tarjetas según tus necesidades */
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 10px; /* Añadido para dar espacio alrededor del tablero */
+    box-sizing: border-box; /* Añadido para incluir padding en el ancho total */
+}
+
+.board > * {
+    flex: 0 0 calc(25% - 10px); /* Ajusta el tamaño de las tarjetas según tus necesidades y el espacio entre ellas */
+    box-sizing: border-box; /* Añadido para incluir padding en el ancho total de las tarjetas */
+}

@@ -1,5 +1,3 @@
-// memoryCard.js
-
 import '../memoryCards.js/memoryCard.css';
 
 const MemoryCard = ({ animating, handleMemoClick, memoryCard }) => (

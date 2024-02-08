@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Board from "./Board/Board";
 
-const animalEmojis = [..."🐶 🐱"];
+const animalEmojis = [..."🐶 🐱 🐭 🐰 🦊 🦁 🐯 🐻 🐨 🐼 🦓 🐴 🦄 🐮 🐷 🐸 🐔 🐦 🐧 🐢"];
 
 export const metadata = {
   title: 'Memory Game Online',
