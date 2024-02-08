@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import Board from "./Board/Board";
+
 const animalEmojis = [..."🐶 🐱"];
 
 export const metadata = {
@@ -8,16 +11,21 @@ export const metadata = {
 }
 
 const App = () => {
-  const [shuffledAnimals, setShuffledAnimals] = useState([])
+  const [shuffledAnimals, setShuffledAnimals] = useState([]);
 
-    const shuffledArray = [...animalEmojis];
+  useEffect(() => {
+    const shuffledArray = [...animalEmojis, ...animalEmojis];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
-    return shuffledArray;
-  
+    const formattedArray = shuffledArray.map((emoji, i) => ({ index: i, emoji, flipped: false }));
+    setShuffledAnimals(formattedArray);
+  }, []);
 
+  return (
+    <Board memoryCard={shuffledAnimals} />
+  );
 }
 
-export default App
+export default App;

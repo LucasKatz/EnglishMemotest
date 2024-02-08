@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+/*import { useState, useEffect } from "react";
 import Board from "./animals/animalsBoard";
 
 const animalEmojis = ["🐶", "🐱"];
@@ -106,4 +106,4 @@ function Animals() {
     );
 }
 
-export default Animals
+export default Animals*/
