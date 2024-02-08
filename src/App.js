@@ -14,7 +14,7 @@ export const metadata = {
 const App = () => {
   const [shuffledAnimals, setShuffledAnimals] = useState([]);
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
-  const [animating, setAnimating] = useState(false);
+  const [animating, setAnimating] = useState(0); // Nuevo estado para contar las tarjetas animando
 
   useEffect(() => {
     const shuffledArray = [...animalEmojis, ...animalEmojis];
@@ -27,19 +27,25 @@ const App = () => {
   }, []);
 
   const handleClick = (memoBlock) => {
-    handleMemoClick(
-      memoBlock,
-      shuffledAnimals,
-      setShuffledAnimals,
-      selectedMemoBlock,
-      setselectedMemoBlock,
-      setAnimating
-    );
+    // Verificar si ya hay dos tarjetas animando
+    if (animating < 2) {
+      handleMemoClick(
+        memoBlock,
+        shuffledAnimals,
+        setShuffledAnimals,
+        selectedMemoBlock,
+        setselectedMemoBlock,
+        animating,
+        setAnimating // Pasa setAnimating a handleMemoClick
+      );
+    }
   };
+  
 
   return (
     <Board memoryCard={shuffledAnimals} handleClick={handleClick} />
   );
 }
+
 
 export default App;
