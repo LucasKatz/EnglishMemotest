@@ -15,6 +15,7 @@ const App = () => {
   const [shuffledAnimals, setShuffledAnimals] = useState([]);
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
   const [animating, setAnimating] = useState(0); // Nuevo estado para contar las tarjetas animando
+  const [comparing, setComparing] = useState(false); // Estado para indicar si se está comparando
 
   useEffect(() => {
     const shuffledArray = [...animalEmojis, ...animalEmojis];
@@ -27,6 +28,11 @@ const App = () => {
   }, []);
 
   const handleClick = (memoBlock) => {
+    // Si se está comparando, no hacer nada
+    if (comparing) {
+      return;
+    }
+
     // Verificar si ya hay dos tarjetas animando
     if (animating < 2) {
       handleMemoClick(
@@ -36,16 +42,17 @@ const App = () => {
         selectedMemoBlock,
         setselectedMemoBlock,
         animating,
-        setAnimating // Pasa setAnimating a handleMemoClick
+        setAnimating, // Pasa setAnimating a handleMemoClick
+        comparing,
+        setComparing // Pasa setComparing a handleMemoClick
       );
     }
   };
-  
 
   return (
     <Board memoryCard={shuffledAnimals} handleClick={handleClick} />
   );
 }
 
-
 export default App;
+
