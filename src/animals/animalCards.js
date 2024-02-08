@@ -70,8 +70,8 @@ function Animals() {
   const checkMatch = () => {
     if (revealedCards.length === 2) {
       const [card1, card2] = revealedCards;
-      if (card1.animalEmojis === card2.animalEmojis) {
-        console.log("Coinciden");
+      if (card1.animalEmojis !== card2.animalEmojis) {
+        console.log("No Coinciden");
   
         // Después de un tiempo, establece isMatched en true
         setTimeout(() => {
@@ -84,9 +84,9 @@ function Animals() {
           );
           setMatchedCards((prevMatchedCards) => [...prevMatchedCards, card1, card2]);
           setIsMatched(true);
-        }, 5000); // ESTE ES EL SETTIMEOUT QUE FUNCIONA A LA INVERSA
+        }, 1000); // Ajusta el tiempo según tus necesidades
       } else {
-        console.log("No coinciden");
+        console.log("Coinciden");
   
         // Después de un tiempo, oculta las cartas reveladas
         setTimeout(() => {
@@ -98,7 +98,7 @@ function Animals() {
             )
           );
           setIsRevealed(false);
-        }, 1000); // Ajusta el tiempo según tus necesidades
+        }, 3000); // Ajusta el tiempo según tus necesidades
       }
     }
   };

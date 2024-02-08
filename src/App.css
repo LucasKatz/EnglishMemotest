@@ -68,9 +68,5 @@
 
 .card.matched {
   transform: rotateY(180deg); 
-  pointer-events: none; 
 }
 
-#memoryCard.matched {
-  cursor: default; 
-}
