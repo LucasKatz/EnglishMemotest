@@ -1,15 +1,18 @@
+/* board.css */
+
 .board {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 10px; /* Ajusta el espacio entre las tarjetas según tus necesidades */
-    max-width: 100%;
-    margin: 10px auto;
-    padding: 10px; /* Añadido para dar espacio alrededor del tablero */
-    box-sizing: border-box; /* Añadido para incluir padding en el ancho total */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100vh; /* Altura del 80% del alto de la pantalla */
+    width: 100vw; /* Ancho del 80% del ancho de la pantalla */
 }
 
 .board > * {
-    flex: 0 0 calc(25% - 10px); /* Ajusta el tamaño de las tarjetas según tus necesidades y el espacio entre ellas */
-    box-sizing: border-box; /* Añadido para incluir padding en el ancho total de las tarjetas */
+    flex: 0 0 calc(20% - 30px); /* Ajusta el tamaño de las tarjetas y los márgenes */
+    margin-top: 10px;
+    box-sizing: border-box;
 }

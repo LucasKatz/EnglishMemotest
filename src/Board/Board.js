@@ -1,16 +1,24 @@
 import MemoryCard from "../memoryCards.js/memoryCard";
-import "../App.css";
+import "../Board/Board.css";
 
 const Board = ({ animating, handleClick, memoryCard }) => {
   return (
     <main className="board">
       {memoryCard.map((card, i) => {
-        return <MemoryCard key={`${i}_${card.emoji}`} animating={animating} handleMemoClick={() => handleClick(card, animating)} memoryCard={card} />
-
+        // Agregar 1 al índice para que comience desde 1 en lugar de 0
+        const cardWithNumber = { ...card, number: i + 1 };
+        return (
+          <MemoryCard
+            key={`${i}_${card.emoji}`}
+            animating={animating}
+            handleMemoClick={() => handleClick(cardWithNumber, animating)}
+            memoryCard={cardWithNumber}
+          />
+        );
       })}
     </main>
   );
-}
+};
 
 export default Board;
 

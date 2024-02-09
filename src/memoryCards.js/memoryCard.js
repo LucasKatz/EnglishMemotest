@@ -4,6 +4,7 @@ const MemoryCard = ({ animating, handleMemoClick, memoryCard }) => (
   <div className="memo-block" onClick={() => (!memoryCard.flipped && !animating) && handleMemoClick(memoryCard)}>
     <div className={`memo-block-inner ${memoryCard.flipped && 'memo-block-flipped'}`}>
       <div className="memo-block-front">
+        <span className="card-number">{memoryCard.number}</span>
       </div>
       <div className="memo-block-back">
         {memoryCard.emoji}
@@ -13,5 +14,6 @@ const MemoryCard = ({ animating, handleMemoClick, memoryCard }) => (
 )
 
 export default MemoryCard;
+
 
 
