@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import Board from "./Board/Board";
-import handleMemoClick from "./components/memoClick";
-
-const animalEmojis = [..."🐶🐱🐭🐰🦊🦁🐯🐻🐨🐼🦓🐴🦄🐮🐷🐸🐔🐦🐧🐢"];
+import Board from "../Board/Board";
+import handleMemoClick from "../components/memoClick";
+const foodEmojis = [..."🍔🍕🌭🍟🥪🌮🥙🥗🥘🍝🍜🍲🍛🍣🍤🍱🍚🍨🍦🍰"];
 
 export const metadata = {
   title: 'Memory Game Online',
@@ -11,20 +10,20 @@ export const metadata = {
   keywords: "games - school - English - vocabulary"
 }
 
-const Animals = () => {
-  const [shuffledAnimals, setShuffledAnimals] = useState([]);
+const Food = () => {
+  const [shuffledfood, setShuffledfood] = useState([]);
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
   const [animating, setAnimating] = useState(0); // Nuevo estado para contar las tarjetas animando
   const [comparing, setComparing] = useState(false); // Estado para indicar si se está comparando
 
   useEffect(() => {
-    const shuffledArray = [...animalEmojis, ...animalEmojis];
+    const shuffledArray = [...foodEmojis, ...foodEmojis];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
     const formattedArray = shuffledArray.map((emoji, i) => ({ index: i, emoji, flipped: false }));
-    setShuffledAnimals(formattedArray);
+    setShuffledfood(formattedArray);
   }, []);
 
   const handleClick = (memoBlock) => {
@@ -37,8 +36,8 @@ const Animals = () => {
     if (animating < 2) {
       handleMemoClick(
         memoBlock,
-        shuffledAnimals,
-        setShuffledAnimals,
+        shuffledfood,
+        setShuffledfood,
         selectedMemoBlock,
         setselectedMemoBlock,
         animating,
@@ -50,8 +49,8 @@ const Animals = () => {
   };
 
   return (
-    <Board memoryCard={shuffledAnimals} handleClick={handleClick} />
+    <Board memoryCard={shuffledfood} handleClick={handleClick} />
   );
 }
 
-export default Animals;
+export default Food;

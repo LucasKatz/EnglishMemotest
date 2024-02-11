@@ -6,8 +6,8 @@ const links = [
     href: '/animals',
   },
   {
-    label: 'Parts of the House',
-    href: '/house',
+    label: 'Food',
+    href: '/food',
   },
   {
     label: 'Feelings',
