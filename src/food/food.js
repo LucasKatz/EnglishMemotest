@@ -27,12 +27,11 @@ const Food = () => {
   }, []);
 
   const handleClick = (memoBlock) => {
-    // Si se está comparando, no hacer nada
+
     if (comparing) {
       return;
     }
 
-    // Verificar si ya hay dos tarjetas animando
     if (animating < 2) {
       handleMemoClick(
         memoBlock,
@@ -41,9 +40,9 @@ const Food = () => {
         selectedMemoBlock,
         setselectedMemoBlock,
         animating,
-        setAnimating, // Pasa setAnimating a handleMemoClick
+        setAnimating, 
         comparing,
-        setComparing // Pasa setComparing a handleMemoClick
+        setComparing 
       );
     }
   };

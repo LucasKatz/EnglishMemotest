@@ -1,6 +1,7 @@
 import Navbar from "./components/navbar";
 import Footer from './components/footer';
-import Animals from "./animals/formerAppjs";
+import Animals from "./animals/animals";
+import Animals2 from "./animals/animals2";
 import Home from "./home/home";
 import Food from "./food/food";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -19,7 +20,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/animals' element={<Animals />} />
+        <Route path='/animals' element={<Animals2 />} />
         <Route path='/Irregular' element="" />
         <Route path='/food' element={<Food/>}  />
         <Route path='/checkout' element="" />

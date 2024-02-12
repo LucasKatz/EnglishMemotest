@@ -1,4 +1,4 @@
-const handleMemoClick = (memoBlock, shuffledMemoBlocks, setShuffledMemoBlocks, selectedMemoBlock, setselectedMemoBlock, flippedCount, setFlippedCount, animating, setAnimating) => {
+const handleMemoClick2 = (memoBlock, shuffledMemoBlocks, setShuffledMemoBlocks, selectedMemoBlock, setselectedMemoBlock, flippedCount, setFlippedCount, animating, setAnimating) => {
     // Verificar si ya hay dos tarjetas volteadas
     if (flippedCount === 2) {
       // Si ya hay dos tarjetas volteadas, no hacer nada
@@ -12,7 +12,8 @@ const handleMemoClick = (memoBlock, shuffledMemoBlocks, setShuffledMemoBlocks, s
   
     if (selectedMemoBlock === null) {
       setselectedMemoBlock(memoBlock);
-    } else if (selectedMemoBlock.emoji === memoBlock.emoji) {
+    } else if (selectedMemoBlock.emoji === memoBlock.emoji && selectedMemoBlock.word === memoBlock.word) {
+      // Si hay un match entre el emoji y su definición en palabras, marcar como match
       setselectedMemoBlock(null);
     } else {
       setAnimating(true);
@@ -31,13 +32,8 @@ const handleMemoClick = (memoBlock, shuffledMemoBlocks, setShuffledMemoBlocks, s
     } else {
       setFlippedCount(flippedCount + 1);
     }
-  };
-  
-  export default handleMemoClick;
+};
 
-  
-  
+export default handleMemoClick2;
 
-  
-  
-  
+
