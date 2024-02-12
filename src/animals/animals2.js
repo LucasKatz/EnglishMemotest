@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Board from '../Board/Board';
+import Board2 from '../Board/Board2';
 import handleMemoClick2 from '../components/memoClick2';
 
 // Define los emojis y las palabras correspondientes
@@ -54,7 +54,8 @@ const combinedArray = [
       return;
     }
     if (animating < 2) {
-        console.log("Valor de la tarjeta:", memoBlock);
+        console.log("Valor de la word:", memoBlock.word);
+        console.log("Valor del Emoji:", memoBlock.emoji);
         handleMemoClick2(
           memoBlock,
           shuffledAnimals,
@@ -70,7 +71,7 @@ const combinedArray = [
   };
 
   return (
-    <Board memoryCard={shuffledAnimals} handleClick={handleClick} />
+    <Board2 memoryCard={shuffledAnimals} handleClick={handleClick} />
   );
 }
 

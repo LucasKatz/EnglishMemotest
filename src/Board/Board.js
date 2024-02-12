@@ -1,4 +1,4 @@
-import MemoryCard from "../memoryCards.js/memoryCard";
+/*import MemoryCard from "../memoryCards.js/memoryCard";
 import "../Board/Board.css";
 
 const Board = ({ animating, handleClick, memoryCard }) => {
@@ -20,7 +20,7 @@ const Board = ({ animating, handleClick, memoryCard }) => {
   );
 };
 
-export default Board;
+export default Board;*/
 
 
 
