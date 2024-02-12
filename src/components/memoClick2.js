@@ -36,4 +36,3 @@ const handleMemoClick2 = (memoBlock, shuffledMemoBlocks, setShuffledMemoBlocks, 
 
 export default handleMemoClick2;
 
-
