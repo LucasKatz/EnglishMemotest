@@ -1,8 +1,8 @@
 import React from "react";
-import MemoryCard2 from "../memoryCards.js/memoryCard2"; // Importamos MemoryCard2 en lugar de MemoryCard1
+import MemoryCard2 from "../memoryCards.js/memoryCard2";
 import "../Board/Board.css";
 
-const Board2 = ({ animating, handleClick, memoryCard }) => {
+const Board2 = ({ animating, handleClick, memoryCard, showEmoji }) => {
   return (
     <main className="board">
       {memoryCard.map((card, i) => {
@@ -11,9 +11,10 @@ const Board2 = ({ animating, handleClick, memoryCard }) => {
         return (
           <MemoryCard2
             key={`${i}_${card.emoji}`}
-            animating={animating} // Pasamos animating
-            handleMemoClick={() => handleClick(cardWithNumber)} // No necesitamos pasar animating aquí
+            animating={animating}
+            handleMemoClick={() => handleClick(cardWithNumber)}
             memoryCard={cardWithNumber}
+            showEmoji={showEmoji} // Pasa showEmoji como prop
           />
         );
       })}
