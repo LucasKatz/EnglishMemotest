@@ -1,4 +1,4 @@
-const handleMemoClick = (memoBlock, shuffledMemoBlocks, setShuffledMemoBlocks, selectedMemoBlock, setselectedMemoBlock, flippedCount, setFlippedCount, animating, setAnimating) => {
+/*const handleMemoClick = (memoBlock, shuffledMemoBlocks, setShuffledMemoBlocks, selectedMemoBlock, setselectedMemoBlock, flippedCount, setFlippedCount, animating, setAnimating) => {
     // Verificar si ya hay dos tarjetas volteadas
     if (flippedCount === 2) {
       // Si ya hay dos tarjetas volteadas, no hacer nada
@@ -35,7 +35,7 @@ const handleMemoClick = (memoBlock, shuffledMemoBlocks, setShuffledMemoBlocks, s
   
   export default handleMemoClick;
 
-  
+  */
   
 
   

@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+/*import { useEffect, useState } from "react";
 import Board from "../Board/Board";
 import handleMemoClick from "../components/memoClick";
 
-const animalEmojis = [..."🐶🐱🐭🐰🦊🦁🐯🐻🐨🐼🦓🐴🦄🐮🐷🐸🐔🐦🐧🐢"];
+const animalEmojisLevel2 = [..."🐶🐱🐭🐰🦊🦁🐯🐻🐨🐼🦓🐴🦄🐮🐷🐸🐔🐦🐧🐢"];
 
 export const metadata = {
   title: 'Memory Game Online',
@@ -14,11 +14,11 @@ export const metadata = {
 const Animals = () => {
   const [shuffledAnimals, setShuffledAnimals] = useState([]);
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
-  const [animating, setAnimating] = useState(0); // Nuevo estado para contar las tarjetas animando
-  const [comparing, setComparing] = useState(false); // Estado para indicar si se está comparando
+  const [flippedCount, setFlippedCount] = useState(0);
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    const shuffledArray = [...animalEmojis, ...animalEmojis];
+    const shuffledArray = [...animalEmojisLevel2, ...animalEmojisLevel2];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
@@ -28,25 +28,21 @@ const Animals = () => {
   }, []);
 
   const handleClick = (memoBlock) => {
-    // Si se está comparando, no hacer nada
-    if (comparing) {
+    if (flippedCount === 2) {
       return;
     }
 
-    // Verificar si ya hay dos tarjetas animando
-    if (animating < 2) {
-      handleMemoClick(
-        memoBlock,
-        shuffledAnimals,
-        setShuffledAnimals,
-        selectedMemoBlock,
-        setselectedMemoBlock,
-        animating,
-        setAnimating, // Pasa setAnimating a handleMemoClick
-        comparing,
-        setComparing // Pasa setComparing a handleMemoClick
-      );
-    }
+    handleMemoClick(
+      memoBlock,
+      shuffledAnimals,
+      setShuffledAnimals,
+      selectedMemoBlock,
+      setselectedMemoBlock,
+      flippedCount,
+      setFlippedCount,
+      animating,
+      setAnimating
+    );
   };
 
   return (
@@ -55,3 +51,4 @@ const Animals = () => {
 }
 
 export default Animals;
+*/

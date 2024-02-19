@@ -20,7 +20,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/animals' element={<Animals2 />} />
+        <Route path='/animals' element={<Animals2/>} />
         <Route path='/Irregular' element="" />
         <Route path='/food' element={<Food/>}  />
         <Route path='/checkout' element="" />
