@@ -1,72 +1,7 @@
 import { useEffect, useState } from "react";
 import Board2 from "../Board/Board2"; 
 import handleMemoClick2 from "../components/memoClick2";
-
-const animalEmojis = [
-  { emoji: "🐶", id: 1 },
-  { emoji: "🐱", id: 2 },
-  { emoji: "🐭", id: 3 },
-  { emoji: "🐰", id: 4 },
-  { emoji: "🦊", id: 5 },
-  { emoji: "🦁", id: 6 },
-  { emoji: "🐯", id: 7 },
-  { emoji: "🐻", id: 8 },
-  { emoji: "🐨", id: 9 },
-  { emoji: "🐼", id: 10 },
-  { emoji: "🦓", id: 11 },
-  { emoji: "🐴", id: 12 },
-  { emoji: "🦄", id: 13 },
-  { emoji: "🐮", id: 14 },
-  { emoji: "🐷", id: 15 },
-  { emoji: "🐸", id: 16 },
-  { emoji: "🐔", id: 17 },
-  { emoji: "🐦", id: 18 },
-  { emoji: "🐧", id: 19 },
-  { emoji: "🐢", id: 20 },
-  { emoji: "turtle", id: 20 },
-  { emoji: "dog", id: 1 },
-  { emoji: "cat", id: 2 },
-  { emoji: "mouse", id: 3 },
-  { emoji: "rabbit", id: 4 },
-  { emoji: "fox", id: 5 },
-  { emoji: "lion", id: 6 },
-  { emoji: "tiger", id: 7 },
-  { emoji: "bear", id: 8 },
-  { emoji: "koala", id: 9 },
-  { emoji: "panda", id: 10 },
-  { emoji: "zebra", id: 11 },
-  { emoji: "horse", id: 12 },
-  { emoji: "unicorn", id: 13 },
-  { emoji: "cow", id: 14 },
-  { emoji: "pig", id: 15 },
-  { emoji: "frog", id: 16 },
-  { emoji: "chicken", id: 17 },
-  { emoji: "bird", id: 18 },
-  { emoji: "penguin", id: 19 },
-];
-
-const animalEmojisLevel2 = [
-  { emoji: "🐶", id: 1 },
-  { emoji: "🐱", id: 2 },
-  { emoji: "🐭", id: 3 },
-  { emoji: "🐰", id: 4 },
-  { emoji: "🦊", id: 5 },
-  { emoji: "🦁", id: 6 },
-  { emoji: "🐯", id: 7 },
-  { emoji: "🐻", id: 8 },
-  { emoji: "🐨", id: 9 },
-  { emoji: "🐼", id: 10 },
-  { emoji: "🦓", id: 11 },
-  { emoji: "🐴", id: 12 },
-  { emoji: "🦄", id: 13 },
-  { emoji: "🐮", id: 14 },
-  { emoji: "🐷", id: 15 },
-  { emoji: "🐸", id: 16 },
-  { emoji: "🐔", id: 17 },
-  { emoji: "🐦", id: 18 },
-  { emoji: "🐧", id: 19 },
-  { emoji: "🐢", id: 20 },
-];
+import { animalEmojis, animalEmojisLevel2 } from "../Data/data";
 
 export const metadata = {
   title: 'Memory Game Online',
@@ -80,7 +15,7 @@ const Animals2 = () => {
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
   const [animating, setAnimating] = useState(0); 
   const [comparing, setComparing] = useState(false); 
-  const [selectedLevel, setSelectedLevel] = useState(3);
+  const [selectedLevel, setSelectedLevel] = useState(1);
 
   useEffect(() => {
     let selectedArray;
