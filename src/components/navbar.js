@@ -1,8 +1,13 @@
 import React from 'react';
+import "./componentes.css"
 
 const Navbar = () => {
   return (
-    <p>Aca se va a renderizar el navbar</p>
+    <div className='header'>
+        <div className='left'>left</div>
+        <div className='center'>center</div>
+        <div className='right'>right</div>
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import MemoryCard2 from "../memoryCards.js/memoryCard2";
 import "../Board/Board.css";
 
+
 const Board2 = ({ animating, handleClick, memoryCard, showEmoji }) => {
   return (
     <main className="board">

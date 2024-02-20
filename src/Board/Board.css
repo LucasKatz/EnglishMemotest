@@ -1,5 +1,6 @@
 /* board.css */
 
+
 .board {
     display: flex;
     flex-wrap: wrap;
@@ -9,6 +10,7 @@
     box-sizing: border-box;
     height: 100vh; /* Altura del 80% del alto de la pantalla */
     width: 100vw; /* Ancho del 80% del ancho de la pantalla */
+    background-image: "./public/school.webp"; /*ARREGLAR RUTA A LA IMAGEN */
 }
 
 .board > * {
