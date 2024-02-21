@@ -10,7 +10,7 @@ export const metadata = {
   keywords: "games - school - English - vocabulary"
 }
 
-const Animals2 = ({ selectedLevel, onCounterIncrement }) => {
+const MemoryLogic = ({ selectedLevel, onCounterIncrement }) => {
   const [shuffledAnimals, setShuffledAnimals] = useState([]);
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
   const [animating, setAnimating] = useState(0); 
@@ -110,6 +110,6 @@ const Animals2 = ({ selectedLevel, onCounterIncrement }) => {
   );
 }
 
-export default Animals2;
+export default MemoryLogic;
 
 

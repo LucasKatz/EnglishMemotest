@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import Navbar from "./components/navbar";
 import Footer from './components/footer';
-import Animals2 from "./animals/animals2";
+import Animals from './animals/animalsVocab';
 import Home from "./home/home";
-import Food from "./food/food";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./App.css";
 
@@ -32,9 +31,9 @@ export default function App() {
       <Navbar onSelectLevel={handleLevelChange} counter={counter} />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/animals' element={<Animals2 selectedLevel={selectedLevel} onCounterIncrement={handleCounterIncrement} />} />
+        <Route path='/animals' element={<Animals selectedLevel={selectedLevel} onCounterIncrement={handleCounterIncrement} />} />
         <Route path='/Irregular' element="" />
-        <Route path='/food' element={<Food/>}  />
+        <Route path='/food' element="" />
         <Route path='/checkout' element="" />
         <Route path='*' element={<h1>404 NOT FOUND</h1>} />
       </Routes>
