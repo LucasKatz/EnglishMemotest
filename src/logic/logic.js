@@ -13,7 +13,7 @@ const shuffleArray = (array) => {
   return shuffledArray;
 };
 
-const MemoryLogic = ({ selectedLevel, onCounterIncrement, emojis, emojisLevel2 }) => {
+const MemoryLogic = ({ selectedLevel, onCounterIncrement, onCounterReset, emojis, emojisLevel2 }) => {
   const [shuffledArray, setShuffledArray] = useState([]);
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
   const [animating, setAnimating] = useState(0); 
@@ -32,6 +32,8 @@ const MemoryLogic = ({ selectedLevel, onCounterIncrement, emojis, emojisLevel2 }
     setselectedMemoBlock(null);
     setAnimating(0);
     setComparing(false);
+    onCounterReset();
+    
   };
 
   useEffect(() => {

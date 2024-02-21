@@ -27,12 +27,20 @@ export default function App() {
     setCounter((prevCounter) => prevCounter + 1);
   };
 
+  const handleCounterReset = () => {
+    setCounter(0);
+  };
+
+
   return (
     <BrowserRouter>
       <Navbar onSelectLevel={handleLevelChange} counter={counter} />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/animals' element={<Animals selectedLevel={selectedLevel} onCounterIncrement={handleCounterIncrement} />} />
+        <Route
+        path='/animals'
+        element={<Animals selectedLevel={selectedLevel} onCounterIncrement={handleCounterIncrement} onCounterReset={handleCounterReset} />}
+      />
         <Route path='/Irregular' element="" />
         <Route path='/food' element={<Food selectedLevel={selectedLevel} onCounterIncrement={handleCounterIncrement} />} />
         <Route path='/checkout' element="" />

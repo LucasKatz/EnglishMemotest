@@ -23,7 +23,7 @@ const Board2 = ({ animating, handleClick, memoryCard, showEmoji, resetBoard }) =
       })}
             <button onClick={resetBoard}>Reset</button>
             <Link to={"/"}>
-            <button>
+            <button onClick={resetBoard}>
               Back to Menu
             </button>
             </Link>
