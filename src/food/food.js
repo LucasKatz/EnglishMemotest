@@ -1,9 +1,8 @@
-// Animals.js
 import { useState } from "react";
-import { animalEmojis, animalEmojisLevel2 } from "../Data/data";
 import MemoryLogic from "../logic/logic"
+import { foodEmojis, foodEmojisLevel2 } from "../Data/data";
 
-const Animals = ({ onCounterIncrement }) => {
+const Food = ({ onCounterIncrement }) => {
   const [selectedLevel, setSelectedLevel] = useState(1);
 
   const handleLevelChange = (level) => {
@@ -14,10 +13,10 @@ const Animals = ({ onCounterIncrement }) => {
     <MemoryLogic
       selectedLevel={selectedLevel}
       onCounterIncrement={onCounterIncrement}
-      emojis={animalEmojis}
-      emojisLevel2={animalEmojisLevel2}
+      emojis={foodEmojisLevel2}
+      emojisLevel2={foodEmojisLevel2}
     />
   );
 };
 
-export default Animals;
+export default Food;

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from "./components/navbar";
 import Footer from './components/footer';
 import Animals from './animals/animalsVocab';
+import Food from './food/food';
 import Home from "./home/home";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./App.css";
@@ -33,7 +34,7 @@ export default function App() {
         <Route path='/' element={<Home />} />
         <Route path='/animals' element={<Animals selectedLevel={selectedLevel} onCounterIncrement={handleCounterIncrement} />} />
         <Route path='/Irregular' element="" />
-        <Route path='/food' element="" />
+        <Route path='/food' element={<Food selectedLevel={selectedLevel} onCounterIncrement={handleCounterIncrement} />} />
         <Route path='/checkout' element="" />
         <Route path='*' element={<h1>404 NOT FOUND</h1>} />
       </Routes>
