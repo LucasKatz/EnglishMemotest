@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import Navbar from "./components/navbar";
 import Footer from './components/footer';
-import Animals from "./animals/animals";
 import Animals2 from "./animals/animals2";
 import Home from "./home/home";
 import Food from "./food/food";
@@ -15,12 +15,24 @@ export const metadata = {
 }
 
 export default function App() {
+  const [selectedLevel, setSelectedLevel] = useState(1);
+  const [counter, setCounter] = useState(0);
+
+  const handleLevelChange = (level) => {
+    setSelectedLevel(level);
+  };
+
+
+  const handleCounterIncrement = () => {
+    setCounter((prevCounter) => prevCounter + 1);
+  };
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar onSelectLevel={handleLevelChange} counter={counter} />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/animals' element={<Animals2/>} />
+        <Route path='/animals' element={<Animals2 selectedLevel={selectedLevel} onCounterIncrement={handleCounterIncrement} />} />
         <Route path='/Irregular' element="" />
         <Route path='/food' element={<Food/>}  />
         <Route path='/checkout' element="" />

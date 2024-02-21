@@ -1,9 +1,10 @@
 import React from "react";
 import MemoryCard2 from "../memoryCards.js/memoryCard2";
+import { Link } from "react-router-dom";
 import "../Board/Board.css";
 
 
-const Board2 = ({ animating, handleClick, memoryCard, showEmoji }) => {
+const Board2 = ({ animating, handleClick, memoryCard, showEmoji, resetBoard }) => {
   return (
     <main className="board">
       {memoryCard.map((card, i) => {
@@ -18,7 +19,14 @@ const Board2 = ({ animating, handleClick, memoryCard, showEmoji }) => {
             showEmoji={showEmoji} // Pasa showEmoji como prop
           />
         );
+        
       })}
+            <button onClick={resetBoard}>Reset</button>
+            <Link to={"/"}>
+            <button>
+              Back to Menu
+            </button>
+            </Link>
     </main>
   );
 };

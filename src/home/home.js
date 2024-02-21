@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Navbar from '../components/navbar';
 
 const links = [
   {
@@ -29,6 +30,7 @@ const links = [
 
 const Home = () => {
   return (
+    
     <div className='h-screen m-auto bg-white f'>
       <section className='bg-green flex flex-row justify-center align-middle h-screen'>
         <div className="flex flex-row m-auto">

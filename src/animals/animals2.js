@@ -10,27 +10,59 @@ export const metadata = {
   keywords: "games - school - English - vocabulary"
 }
 
-const Animals2 = () => {
+const Animals2 = ({ selectedLevel, onCounterIncrement }) => {
   const [shuffledAnimals, setShuffledAnimals] = useState([]);
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
   const [animating, setAnimating] = useState(0); 
   const [comparing, setComparing] = useState(false); 
-  const [selectedLevel, setSelectedLevel] = useState(1);
+
+ 
+
+
+  const resetBoard = () => {
+    let selectedArray;
+    switch (selectedLevel) {
+      case 1:
+        selectedArray = animalEmojisLevel2
+          .slice(0, animalEmojisLevel2.length / 2)
+          .concat(animalEmojisLevel2.slice(0, animalEmojisLevel2.length / 2));
+        break;
+      case 2:
+        selectedArray = animalEmojisLevel2.concat(animalEmojisLevel2);
+        break;
+      case 3:
+      default:
+        selectedArray = animalEmojis;
+        break;
+    }
+
+    const shuffledArray = [...selectedArray];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    const formattedArray = shuffledArray.map((item, i) => ({ index: i, ...item, flipped: false }));
+    setShuffledAnimals(formattedArray);
+
+    // Restablecer otros estados si es necesario
+    setselectedMemoBlock(null);
+    setAnimating(0);
+    setComparing(false);
+  };
 
   useEffect(() => {
     let selectedArray;
     switch (selectedLevel) {
       case 1:
-        // Reduce el array a la mitad y luego lo duplica para el nivel 1
         selectedArray = animalEmojisLevel2.slice(0, animalEmojisLevel2.length / 2)
-                          .concat(animalEmojisLevel2.slice(0, animalEmojisLevel2.length / 2)); 
+          .concat(animalEmojisLevel2.slice(0, animalEmojisLevel2.length / 2)); 
         break;
       case 2:
         selectedArray = animalEmojisLevel2.concat(animalEmojisLevel2)
         break;
       case 3:
       default:
-        selectedArray = animalEmojis; // Usa el array original para el nivel 3 o por defecto
+        selectedArray = animalEmojis;
         break;
     }
 
@@ -45,10 +77,12 @@ const Animals2 = () => {
 
   const handleClick = (memoBlock) => {
     if (comparing) {
+      
       return;
     }
 
     if (animating < 2) {
+ 
       handleMemoClick2(
         memoBlock,
         shuffledAnimals,
@@ -60,14 +94,22 @@ const Animals2 = () => {
         comparing,
         setComparing,
         animalEmojis
+        
       );
+      if(animating===1){
+        
+      onCounterIncrement();}
     }
   };
+  
 
   return (
-    <Board2 memoryCard={shuffledAnimals} handleClick={handleClick} />
+    <>
+    <Board2 memoryCard={shuffledAnimals} handleClick={handleClick} resetBoard={resetBoard} />
+    </>
   );
 }
 
 export default Animals2;
+
 
